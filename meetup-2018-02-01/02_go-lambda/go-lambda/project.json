@@ -1,0 +1,8 @@
+{
+  "name": "hgophers",
+  "description": "A Lambda showcase for Hannover Gophers",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::129858846384:role/hgophers_lambda_function",
+  "environment": {}
+}
