@@ -431,6 +431,8 @@ dlv replay /home/tealeg/.local/share/rr/dumb-0
 
 Sadly we can't inspect variables yet.  Buggy!
 
+edit: inspecting variables works but some variables may be optimized out if optimizations aren't disabled using `-gcflags='all=-N -l'`.
+
 
 * Exotica! eBPF
 ** The Enhanced Berkley Packet Filter
