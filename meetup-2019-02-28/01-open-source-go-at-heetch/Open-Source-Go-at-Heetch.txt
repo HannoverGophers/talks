@@ -1,0 +1,127 @@
+Geoffrey J. Teale                                <2019-02-28 Thu>
+
+Open Source Go at Heetch
+========================
+https://www.heetch.com
+
+Just the facts Ma'am:
+~~~~~~~~~~~~~~~~~~~~~
+
+  - French ride hailing company, based in Paris, but with a remote
+    engineering work force.
+  - Notionally Like Uber or MOIA, but *really* not like Uber or MOIA ;-)
+  - We use Go for nearly everything, including parts of our iOS and
+    Android apps.
+    - There's also some Elixir, Kotlin, Swift, Javascript (of course),
+      Ruby (Legacy) and Python (Data Science).
+  - We believe strongly in giving back to the Go community:
+    - Open Source as much as possible
+    - Sponsor events:
+      - Platinum sponsor for dotGo! 2019:
+        https://www.dotgo.eu/partners
+      - Hosted Golang Paris:
+        https://twitter.com/HeetchEng/status/1064833358738464768
+
+
+What do you do at Heetch?
+=========================
+
+  - I work for the Developer Care team
+  - I wrote a longish blog post about what "Developer Care" is, and how
+    it came to be:
+    - https://eng.heetch.com/developer-care-3e22a4d7ff54
+  - Short version: We build tools and libraries for product oriented
+    engineers to accelerate them and build "tech credit".
+
+
+What Go projects has Heetch released as Open Source
+===================================================
+
+  All of the following are available under the MIT license.
+
+
+Confita
+~~~~~~~
+
+  Description
+        A cascading configuration loading library.
+  Status
+        Stable and production ready. Maintained.
+  Planned work
+        None currently.
+
+  https://github.com/heetch/confita
+
+
+Felice
+~~~~~~
+
+  Description
+        An opinionated Kafka client.
+  Status
+        In production use for consumer / producer communication.
+  Planned work
+        Go native Tables and Streams support.
+
+  https://github.com/heetch/felice
+
+
+LAPJV
+~~~~~
+
+  Description
+        Go native Jonker-Volgenant Algorithm for solving Linear
+        Assignment Problems
+  Status
+        In production use.
+  Planned work
+        None
+
+  https://github.com/heetch/lapjv
+
+
+Regula / RUSE
+~~~~~~~~~~~~~
+
+  Description
+        A go native rules engine supporting server side evaluation, and
+        remote evaluation.
+  Status
+        Currently under active development
+  Planned work
+        (Q2 2019) A UI for creating and managing rule-sets.  A domain
+        specific language for defining rules (RUSE).
+
+  https://github.com/heetch/regula
+
+
+S3Update
+~~~~~~~~
+
+  Description
+        Make your binaries auto-update to new versions when deployed on
+        S3
+  Status
+        Released
+  Planned work
+        None.
+
+  https://github.com/heetch/s3update
+
+
+SQALX
+~~~~~
+
+  Description
+        sqalx (pronounced 'scale-x') is a library built on top of sqlx
+        that allows to seamlessly create nested transactions and to
+        avoid thinking about whether or not a function is called within
+        a transaction. With sqalx you can easily create reusable and
+        composable functions that can be called within or out of
+        transactions and that can create transactions themselves.
+  Status
+        In production use
+  Planned work
+        None
+
+  https://github.com/heetch/sqalx
