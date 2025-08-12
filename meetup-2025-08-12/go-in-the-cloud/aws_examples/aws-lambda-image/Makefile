@@ -1,7 +1,7 @@
 IMAGE_NAME := golambdafunctionimage
 FUNC_NAME := golambdafunctionimage
 
-.PHONY: build push create-lambda invoke login update
+.PHONY: build push create-lambda invoke invoke-with-logs login update
 
 build:
 	@echo "==> Building Docker image"
@@ -36,3 +36,11 @@ update:
 invoke:
 	@echo "==> Invoking the lambda function"
 	aws lambda invoke --function-name $(FUNC_NAME) response.json
+
+invoke-with-logs:
+	@echo "==> Invoking the lambda function"
+	aws lambda invoke --function-name $(FUNC_NAME) --payload '{}' --log-type Tail \
+      /tmp/response.json \
+      --query 'LogResult' \
+      --output text \
+    | base64 --decode

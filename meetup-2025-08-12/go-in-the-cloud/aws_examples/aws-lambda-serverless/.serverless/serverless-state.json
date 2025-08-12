@@ -136,7 +136,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-eu-central-1-ea752f16-f466",
-                "S3Key": "serverless/golambdafunctionserverless/dev/1754992151098-2025-08-12T09:49:11.098Z/golambdafunctionserverless.zip"
+                "S3Key": "serverless/golambdafunctionserverless/dev/1755010184110-2025-08-12T14:49:44.110Z/golambdafunctionserverless.zip"
               },
               "Handler": "bootstrap",
               "Runtime": "provided.al2023",
@@ -164,14 +164,14 @@
               "ListS3LogGroup"
             ]
           },
-          "ListS3LambdaVersionebBvbcaRXejRT0T4ujEjvSc36IoYRoWhywxYrOgUF0": {
+          "ListS3LambdaVersionqa3REditYI65iRcqgeQVhCVJg6qBK0LzqOMLCsIP4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ListS3LambdaFunction"
               },
-              "CodeSha256": "4AyehWW0Le7BEjEMO9k6lEOX/V22cy5JQlj9QNXo5Eo=",
+              "CodeSha256": "IW5Gv75y4SdhpTBtf4R5pDYy7bgiH1FBaNosbIrarFc=",
               "Description": "Listet Objekte im S3-Bucket"
             }
           }
@@ -186,7 +186,7 @@
           "ListS3LambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ListS3LambdaVersionebBvbcaRXejRT0T4ujEjvSc36IoYRoWhywxYrOgUF0"
+              "Ref": "ListS3LambdaVersionqa3REditYI65iRcqgeQVhCVJg6qBK0LzqOMLCsIP4"
             },
             "Export": {
               "Name": "sls-golambdafunctionserverless-dev-ListS3LambdaFunctionQualifiedArn"
@@ -213,7 +213,7 @@
         "timeout": 30,
         "runtime": "provided.al2023",
         "vpc": {},
-        "versionLogicalId": "ListS3LambdaVersionebBvbcaRXejRT0T4ujEjvSc36IoYRoWhywxYrOgUF0"
+        "versionLogicalId": "ListS3LambdaVersionqa3REditYI65iRcqgeQVhCVJg6qBK0LzqOMLCsIP4"
       }
     },
     "configValidationMode": "warn",
@@ -228,7 +228,7 @@
         "individually": true,
         "artifactsS3KeyDirname": "serverless/golambdafunctionserverless/dev/code-artifacts",
         "deploymentBucket": "serverless-framework-deployments-eu-central-1-ea752f16-f466",
-        "artifactDirectoryName": "serverless/golambdafunctionserverless/dev/1754992151098-2025-08-12T09:49:11.098Z"
+        "artifactDirectoryName": "serverless/golambdafunctionserverless/dev/1755010184110-2025-08-12T14:49:44.110Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -243,7 +243,7 @@
   },
   "package": {
     "individually": true,
-    "artifactDirectoryName": "serverless/golambdafunctionserverless/dev/1754992151098-2025-08-12T09:49:11.098Z",
+    "artifactDirectoryName": "serverless/golambdafunctionserverless/dev/1755010184110-2025-08-12T14:49:44.110Z",
     "artifact": ""
   }
 }

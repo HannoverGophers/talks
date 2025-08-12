@@ -17,6 +17,8 @@ type Configuration struct {
 	BucketName string
 }
 
+const msgprefix = "<<Zip execution>>: "
+
 func main() {
 	lambda.Start(handleRequest)
 }
@@ -25,7 +27,7 @@ func handleRequest(ctx context.Context) error {
 	cfg := config()
 	s3c := s3Client()
 
-	log.Printf("Bucket-Name is: %s", cfg.BucketName)
+	log.Printf("%sBucket-Name is: %s", msgprefix, cfg.BucketName)
 
 	input := &s3.ListObjectsV2Input{
 		Bucket:    aws.String(cfg.BucketName),
@@ -45,7 +47,7 @@ func handleRequest(ctx context.Context) error {
 				handleError(err, "key is nil, cannot process s3 object list")
 			}
 
-			log.Printf("LIST OBJECT: Name %q", *object.Key)
+			log.Printf("%sLIST OBJECT: Name %q", msgprefix, *object.Key)
 		}
 	}
 

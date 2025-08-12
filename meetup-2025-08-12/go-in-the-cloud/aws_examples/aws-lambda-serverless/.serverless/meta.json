@@ -1,7 +1,7 @@
 {
-  "/Users/mark.borukhov/go/src/github.com/gophers-meetup/go-in-the-cloud/aws_examples/aws-lambda-serverless/serverless.yml": {
+  "/Users/mark.borukhov/go/src/github.com/gophers-meetup/talks/meetup-2025-08-12/go-in-the-cloud/aws_examples/aws-lambda-serverless/serverless.yml": {
     "versionFramework": "4.18.0",
-    "servicePath": "/Users/mark.borukhov/go/src/github.com/gophers-meetup/go-in-the-cloud/aws_examples/aws-lambda-serverless/serverless.yml",
+    "servicePath": "/Users/mark.borukhov/go/src/github.com/gophers-meetup/talks/meetup-2025-08-12/go-in-the-cloud/aws_examples/aws-lambda-serverless/serverless.yml",
     "serviceConfigFileName": "serverless.yml",
     "service": {
       "service": "golambdafunctionserverless",
@@ -120,12 +120,12 @@
     "serviceProviderAwsCfStackName": "golambdafunctionserverless-dev",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:eu-central-1:348737449002:stack/golambdafunctionserverless-dev/8b5446c0-775f-11f0-8c88-0adf2b0f95d7",
     "serviceProviderAwsCfStackCreated": "2025-08-12T09:34:29.557Z",
-    "serviceProviderAwsCfStackUpdated": "2025-08-12T09:49:15.542Z",
+    "serviceProviderAwsCfStackUpdated": "2025-08-12T14:49:47.719Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "ListS3LambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-central-1:348737449002:function:golambdafunctionserverless-dev-listS3:2",
+        "OutputValue": "arn:aws:lambda:eu-central-1:348737449002:function:golambdafunctionserverless-dev-listS3:3",
         "Description": "Current Lambda function version",
         "ExportName": "sls-golambdafunctionserverless-dev-ListS3LambdaFunctionQualifiedArn"
       },
