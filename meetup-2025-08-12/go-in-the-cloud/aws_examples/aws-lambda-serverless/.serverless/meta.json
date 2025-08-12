@@ -1,0 +1,139 @@
+{
+  "/Users/mark.borukhov/go/src/github.com/gophers-meetup/go-in-the-cloud/aws_examples/aws-lambda-serverless/serverless.yml": {
+    "versionFramework": "4.18.0",
+    "servicePath": "/Users/mark.borukhov/go/src/github.com/gophers-meetup/go-in-the-cloud/aws_examples/aws-lambda-serverless/serverless.yml",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "golambdafunctionserverless",
+      "frameworkVersion": "4",
+      "provider": {
+        "name": "aws",
+        "stage": "dev",
+        "region": "eu-central-1",
+        "runtime": "provided.al2023",
+        "architecture": "arm64",
+        "memorySize": 128,
+        "timeout": 30,
+        "environment": {
+          "BUCKET_NAME": "marks-s3bucket-go-in-the-cloud",
+          "AWS_SDK_LOAD_CONFIG": "true"
+        },
+        "iam": {
+          "role": {
+            "statements": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:ListBucket"
+                ],
+                "Resource": "arn:aws:s3:::marks-s3bucket-go-in-the-cloud"
+              },
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject"
+                ],
+                "Resource": "arn:aws:s3:::marks-s3bucket-go-in-the-cloud/*"
+              }
+            ]
+          }
+        },
+        "versionFunctions": true
+      },
+      "package": {
+        "individually": true,
+        "artifactsS3KeyDirname": "serverless/golambdafunctionserverless/dev/code-artifacts"
+      },
+      "functions": {
+        "listS3": {
+          "handler": "bootstrap",
+          "package": {
+            "artifact": "bin/golambdafunctionserverless.zip"
+          },
+          "description": "Listet Objekte im S3-Bucket",
+          "events": [],
+          "name": "golambdafunctionserverless-dev-listS3"
+        }
+      },
+      "custom": {
+        "bucketName": "marks-s3bucket-go-in-the-cloud"
+      }
+    },
+    "provider": {
+      "name": "aws",
+      "stage": "dev",
+      "region": "eu-central-1",
+      "runtime": "provided.al2023",
+      "architecture": "arm64",
+      "memorySize": 128,
+      "timeout": 30,
+      "environment": {
+        "BUCKET_NAME": "marks-s3bucket-go-in-the-cloud",
+        "AWS_SDK_LOAD_CONFIG": "true"
+      },
+      "iam": {
+        "role": {
+          "statements": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:ListBucket"
+              ],
+              "Resource": "arn:aws:s3:::marks-s3bucket-go-in-the-cloud"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:GetObject"
+              ],
+              "Resource": "arn:aws:s3:::marks-s3bucket-go-in-the-cloud/*"
+            }
+          ]
+        }
+      },
+      "versionFunctions": true
+    },
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "serviceRawFile": "service: golambdafunctionserverless\nframeworkVersion: '4'\n\nprovider:\n  name: aws\n  stage: ${opt:stage, 'dev'}\n  region: eu-central-1\n  runtime: provided.al2023\n  architecture: arm64\n  memorySize: 128\n  timeout: 30\n  environment:\n    BUCKET_NAME: ${self:custom.bucketName}\n    # Optional, nur falls du obige Code-Anpassung nutzt:\n    # BUCKET_REGION: ${self:provider.region}\n    # Gute Defaults:\n    # AWS_REGION: ${self:provider.region}\n    AWS_SDK_LOAD_CONFIG: true\n\n  iam:\n    role:\n      statements:\n        - Effect: Allow\n          Action:\n            - s3:ListBucket\n          Resource:\n            - arn:aws:s3:::${self:custom.bucketName}\n        - Effect: Allow\n          Action:\n            - s3:GetObject\n          Resource:\n            - arn:aws:s3:::${self:custom.bucketName}/*\npackage:\n  individually: true\n\nfunctions:\n  listS3:\n    handler: bootstrap\n    package:\n      artifact: bin/golambdafunctionserverless.zip\n    description: \"Listet Objekte im S3-Bucket\"\n    # logRetentionInDays: 14        # optional\n\ncustom:\n  bucketName: marks-s3bucket-go-in-the-cloud",
+    "command": [
+      "invoke"
+    ],
+    "options": {
+      "log": true,
+      "stage": "dev",
+      "region": "eu-central-1",
+      "function": "listS3"
+    },
+    "orgId": "71160c9f-9ae3-4c88-b19a-663bd71eae49",
+    "orgName": "bmark",
+    "userId": "q5dDtH8ZMDYqJPrnD5",
+    "userName": "bmark",
+    "serviceProviderAwsAccountId": "348737449002",
+    "serviceProviderAwsCfStackName": "golambdafunctionserverless-dev",
+    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:eu-central-1:348737449002:stack/golambdafunctionserverless-dev/8b5446c0-775f-11f0-8c88-0adf2b0f95d7",
+    "serviceProviderAwsCfStackCreated": "2025-08-12T09:34:29.557Z",
+    "serviceProviderAwsCfStackUpdated": "2025-08-12T09:49:15.542Z",
+    "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
+    "serviceProviderAwsCfStackOutputs": [
+      {
+        "OutputKey": "ListS3LambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:eu-central-1:348737449002:function:golambdafunctionserverless-dev-listS3:2",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-golambdafunctionserverless-dev-ListS3LambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "ServerlessDeploymentBucketName",
+        "OutputValue": "serverless-framework-deployments-eu-central-1-ea752f16-f466",
+        "ExportName": "sls-golambdafunctionserverless-dev-ServerlessDeploymentBucketName"
+      }
+    ]
+  }
+}

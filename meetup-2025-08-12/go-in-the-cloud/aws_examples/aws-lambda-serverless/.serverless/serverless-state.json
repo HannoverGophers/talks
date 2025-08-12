@@ -1,0 +1,249 @@
+{
+  "service": {
+    "service": "golambdafunctionserverless",
+    "serviceObject": {
+      "name": "golambdafunctionserverless"
+    },
+    "provider": {
+      "name": "aws",
+      "stage": "dev",
+      "region": "eu-central-1",
+      "runtime": "provided.al2023",
+      "architecture": "arm64",
+      "memorySize": 128,
+      "timeout": 30,
+      "environment": {
+        "BUCKET_NAME": "marks-s3bucket-go-in-the-cloud",
+        "AWS_SDK_LOAD_CONFIG": "true"
+      },
+      "iam": {
+        "role": {
+          "statements": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:ListBucket"
+              ],
+              "Resource": "arn:aws:s3:::marks-s3bucket-go-in-the-cloud"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:GetObject"
+              ],
+              "Resource": "arn:aws:s3:::marks-s3bucket-go-in-the-cloud/*"
+            }
+          ]
+        }
+      },
+      "versionFunctions": true,
+      "compiledCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "ListS3LogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/golambdafunctionserverless-dev-listS3"
+            }
+          },
+          "IamRoleLambdaExecution": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+              "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                  {
+                    "Effect": "Allow",
+                    "Principal": {
+                      "Service": [
+                        "lambda.amazonaws.com"
+                      ]
+                    },
+                    "Action": [
+                      "sts:AssumeRole"
+                    ]
+                  }
+                ]
+              },
+              "Policies": [
+                {
+                  "PolicyName": {
+                    "Fn::Join": [
+                      "-",
+                      [
+                        "golambdafunctionserverless",
+                        "dev",
+                        "lambda"
+                      ]
+                    ]
+                  },
+                  "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "logs:CreateLogStream",
+                          "logs:CreateLogGroup",
+                          "logs:TagResource"
+                        ],
+                        "Resource": [
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/golambdafunctionserverless-dev*:*"
+                          }
+                        ]
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "logs:PutLogEvents"
+                        ],
+                        "Resource": [
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/golambdafunctionserverless-dev*:*:*"
+                          }
+                        ]
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iam\"][\"role\"][\"statements\"][0]"
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iam\"][\"role\"][\"statements\"][1]"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "Path": "/",
+              "RoleName": {
+                "Fn::Join": [
+                  "-",
+                  [
+                    "golambdafunctionserverless",
+                    "dev",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    "lambdaRole"
+                  ]
+                ]
+              }
+            }
+          },
+          "ListS3LambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "serverless-framework-deployments-eu-central-1-ea752f16-f466",
+                "S3Key": "serverless/golambdafunctionserverless/dev/1754992151098-2025-08-12T09:49:11.098Z/golambdafunctionserverless.zip"
+              },
+              "Handler": "bootstrap",
+              "Runtime": "provided.al2023",
+              "FunctionName": "golambdafunctionserverless-dev-listS3",
+              "MemorySize": 128,
+              "Timeout": 30,
+              "Architectures": [
+                "arm64"
+              ],
+              "Description": "Listet Objekte im S3-Bucket",
+              "Environment": {
+                "Variables": {
+                  "BUCKET_NAME": "marks-s3bucket-go-in-the-cloud",
+                  "AWS_SDK_LOAD_CONFIG": "true"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "ListS3LogGroup"
+            ]
+          },
+          "ListS3LambdaVersionebBvbcaRXejRT0T4ujEjvSc36IoYRoWhywxYrOgUF0": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "ListS3LambdaFunction"
+              },
+              "CodeSha256": "4AyehWW0Le7BEjEMO9k6lEOX/V22cy5JQlj9QNXo5Eo=",
+              "Description": "Listet Objekte im S3-Bucket"
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": "serverless-framework-deployments-eu-central-1-ea752f16-f466",
+            "Export": {
+              "Name": "sls-golambdafunctionserverless-dev-ServerlessDeploymentBucketName"
+            }
+          },
+          "ListS3LambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "ListS3LambdaVersionebBvbcaRXejRT0T4ujEjvSc36IoYRoWhywxYrOgUF0"
+            },
+            "Export": {
+              "Name": "sls-golambdafunctionserverless-dev-ListS3LambdaFunctionQualifiedArn"
+            }
+          }
+        }
+      },
+      "vpc": {}
+    },
+    "custom": {
+      "bucketName": "marks-s3bucket-go-in-the-cloud"
+    },
+    "pluginsData": {},
+    "functions": {
+      "listS3": {
+        "handler": "bootstrap",
+        "package": {
+          "artifact": "bin/golambdafunctionserverless.zip"
+        },
+        "description": "Listet Objekte im S3-Bucket",
+        "events": [],
+        "name": "golambdafunctionserverless-dev-listS3",
+        "memory": 128,
+        "timeout": 30,
+        "runtime": "provided.al2023",
+        "vpc": {},
+        "versionLogicalId": "ListS3LambdaVersionebBvbcaRXejRT0T4ujEjvSc36IoYRoWhywxYrOgUF0"
+      }
+    },
+    "configValidationMode": "warn",
+    "serviceFilename": "serverless",
+    "initialServerlessConfig": {
+      "service": "golambdafunctionserverless",
+      "frameworkVersion": "4",
+      "provider": {
+        "$ref": "$[\"service\"][\"provider\"]"
+      },
+      "package": {
+        "individually": true,
+        "artifactsS3KeyDirname": "serverless/golambdafunctionserverless/dev/code-artifacts",
+        "deploymentBucket": "serverless-framework-deployments-eu-central-1-ea752f16-f466",
+        "artifactDirectoryName": "serverless/golambdafunctionserverless/dev/1754992151098-2025-08-12T09:49:11.098Z"
+      },
+      "functions": {
+        "$ref": "$[\"service\"][\"functions\"]"
+      },
+      "custom": {
+        "$ref": "$[\"service\"][\"custom\"]"
+      }
+    },
+    "appId": null,
+    "orgId": null,
+    "layers": {}
+  },
+  "package": {
+    "individually": true,
+    "artifactDirectoryName": "serverless/golambdafunctionserverless/dev/1754992151098-2025-08-12T09:49:11.098Z",
+    "artifact": ""
+  }
+}

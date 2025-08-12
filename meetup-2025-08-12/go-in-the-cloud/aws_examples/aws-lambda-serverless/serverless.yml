@@ -1,0 +1,45 @@
+service: golambdafunctionserverless
+frameworkVersion: '4'
+
+provider:
+  name: aws
+  stage: ${opt:stage, 'dev'}
+  region: eu-central-1
+  runtime: provided.al2023
+  architecture: arm64
+  memorySize: 128
+  timeout: 30
+  environment:
+    BUCKET_NAME: ${self:custom.bucketName}
+    # Optional, nur falls du obige Code-Anpassung nutzt:
+    # BUCKET_REGION: ${self:provider.region}
+    # Gute Defaults:
+    # AWS_REGION: ${self:provider.region}
+    AWS_SDK_LOAD_CONFIG: true
+
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:ListBucket
+          Resource:
+            - arn:aws:s3:::${self:custom.bucketName}
+        - Effect: Allow
+          Action:
+            - s3:GetObject
+          Resource:
+            - arn:aws:s3:::${self:custom.bucketName}/*
+package:
+  individually: true
+
+functions:
+  listS3:
+    handler: bootstrap
+    package:
+      artifact: bin/golambdafunctionserverless.zip
+    description: "Listet Objekte im S3-Bucket"
+    # logRetentionInDays: 14        # optional
+
+custom:
+  bucketName: marks-s3bucket-go-in-the-cloud
