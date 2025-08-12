@@ -120,12 +120,12 @@
     "serviceProviderAwsCfStackName": "golambdafunctionserverless-dev",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:eu-central-1:348737449002:stack/golambdafunctionserverless-dev/8b5446c0-775f-11f0-8c88-0adf2b0f95d7",
     "serviceProviderAwsCfStackCreated": "2025-08-12T09:34:29.557Z",
-    "serviceProviderAwsCfStackUpdated": "2025-08-12T14:49:47.719Z",
+    "serviceProviderAwsCfStackUpdated": "2025-08-12T19:29:38.362Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "ListS3LambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-central-1:348737449002:function:golambdafunctionserverless-dev-listS3:3",
+        "OutputValue": "arn:aws:lambda:eu-central-1:348737449002:function:golambdafunctionserverless-dev-listS3:4",
         "Description": "Current Lambda function version",
         "ExportName": "sls-golambdafunctionserverless-dev-ListS3LambdaFunctionQualifiedArn"
       },

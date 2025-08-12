@@ -105,7 +105,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-eu-central-1-ea752f16-f466",
-          "S3Key": "serverless/golambdafunctionserverless/dev/1755010184110-2025-08-12T14:49:44.110Z/golambdafunctionserverless.zip"
+          "S3Key": "serverless/golambdafunctionserverless/dev/1755026974685-2025-08-12T19:29:34.685Z/golambdafunctionserverless.zip"
         },
         "Handler": "bootstrap",
         "Runtime": "provided.al2023",
@@ -133,14 +133,14 @@
         "ListS3LogGroup"
       ]
     },
-    "ListS3LambdaVersionqa3REditYI65iRcqgeQVhCVJg6qBK0LzqOMLCsIP4": {
+    "ListS3LambdaVersionj1NJaGlDoGuNDIEHlpl2qbJ6ML0AszqV90J1Pyg97QY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ListS3LambdaFunction"
         },
-        "CodeSha256": "IW5Gv75y4SdhpTBtf4R5pDYy7bgiH1FBaNosbIrarFc=",
+        "CodeSha256": "1LULRhBMR4p6ij6HfYNeIvn1wPy5m7cUcnU7dJYni8o=",
         "Description": "Listet Objekte im S3-Bucket"
       }
     }
@@ -155,7 +155,7 @@
     "ListS3LambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ListS3LambdaVersionqa3REditYI65iRcqgeQVhCVJg6qBK0LzqOMLCsIP4"
+        "Ref": "ListS3LambdaVersionj1NJaGlDoGuNDIEHlpl2qbJ6ML0AszqV90J1Pyg97QY"
       },
       "Export": {
         "Name": "sls-golambdafunctionserverless-dev-ListS3LambdaFunctionQualifiedArn"

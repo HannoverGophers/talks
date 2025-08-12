@@ -33,6 +33,11 @@ update:
     --image-uri 348737449002.dkr.ecr.eu-central-1.amazonaws.com/$(IMAGE_NAME):latest \
     --publish
 
+update-configurqation:
+	@echo "==> Updating the lambda function"
+	aws lambda update-function-configuration \
+    --function-name $(FUNC_NAME) \
+
 invoke:
 	@echo "==> Invoking the lambda function"
 	aws lambda invoke --function-name $(FUNC_NAME) response.json
