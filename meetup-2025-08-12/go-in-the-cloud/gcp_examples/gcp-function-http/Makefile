@@ -4,10 +4,6 @@ BUCKET_NAME := marks-test-gcbucket-go-in-the-cloud
 .PHONY: deploy invoke
 
 deploy:
-	#gcloud config set project <PROJECT_ID>
-	#gcloud auth login
-
-	# .env ist optional - hier setzen wir die BUCKET_NAME-Envvar direkt
 	gcloud functions deploy $(FUNC_NAME) \
 	  --gen2 \
 	  --region=europe-west1 \
